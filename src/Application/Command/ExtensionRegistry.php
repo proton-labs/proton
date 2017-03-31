@@ -56,7 +56,7 @@ final class ExtensionRegistry
      */
     public function pre(Command $command) : void
     {
-        $this->extensionRegisterStrategy('pre', $command);
+        $this->extensionRegisterStrategy('pre', $command, null);
     }
 
     /**
@@ -64,7 +64,7 @@ final class ExtensionRegistry
      */
     public function post(Command $command) : void
     {
-        $this->extensionRegisterStrategy('post', $command);
+        $this->extensionRegisterStrategy('post', $command, null);
     }
 
     /**
@@ -76,7 +76,7 @@ final class ExtensionRegistry
         $this->extensionRegisterStrategy('exception', $command, $exception);
     }
 
-    private function extensionRegisterStrategy(string $method, Command $command, \Exception $exception = null)
+    private function extensionRegisterStrategy(string $method, Command $command, \Exception $exception)
     {
         foreach ($this->extensions as $extensionItem) {
             /** @var Extension $extension */
