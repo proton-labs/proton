@@ -1,5 +1,5 @@
 <?php
- /**
+/**
  * This file is part of the proton package.
  *
  * (c) Andrzej Kostrzewa <protonlabs@int.pl>

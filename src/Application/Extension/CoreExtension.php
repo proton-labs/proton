@@ -43,7 +43,7 @@ final class CoreExtension implements Extension
     }
 
     /**
-     * Used to register services in ServiceContainer
+     * Used to register services in ServiceContainer.
      *
      * @param ServiceContainer $serviceContainer
      *

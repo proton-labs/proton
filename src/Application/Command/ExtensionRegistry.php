@@ -97,6 +97,5 @@ final class ExtensionRegistry
                 }
             }
         }
-
     }
 }

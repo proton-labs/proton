@@ -17,7 +17,7 @@ interface Extension
     public function dependsOn() : array;
 
     /**
-     * Used to register services in ServiceContainer
+     * Used to register services in ServiceContainer.
      *
      * @param ServiceContainer $serviceContainer
      */

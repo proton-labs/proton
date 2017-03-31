@@ -15,5 +15,6 @@ namespace Proton\Application\Transaction;
 interface Transaction
 {
     public function commit() : void;
+    
     public function rollback() : void;
 }

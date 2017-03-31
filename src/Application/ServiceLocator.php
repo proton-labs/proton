@@ -19,8 +19,9 @@ interface ServiceLocator
     /**
      * @param string $id
      *
-     * @return mixed
      * @throws NotFoundException
+     *
+     * @return mixed
      */
     public function get(string $id);
 

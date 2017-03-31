@@ -17,8 +17,9 @@ final class KernelException extends Exception
     /**
      * @param string $extensionClass
      *
-     * @return KernelException
      * @throws KernelException
+     *
+     * @return KernelException
      */
     public static function missingExtension(string $extensionClass) : KernelException
     {
@@ -26,8 +27,9 @@ final class KernelException extends Exception
     }
 
     /**
-     * @return KernelException
      * @throws KernelException
+     *
+     * @return KernelException
      */
     public static function notBuilt() : KernelException
     {
