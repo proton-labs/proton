@@ -1,0 +1,24 @@
+{
+  "name": "proton-labs/proton",
+  "description": "Common library for CQRS projects",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Andrzej Kostrzewa",
+      "email": "protonlabs@int.pl"
+    }
+  ],
+  "require": {
+    "php": "~7.1",
+    "doctrine/orm": "~2.5",
+    "league/tactician": "~1.0",
+    "ramsey/uuid": "~3.6",
+    "roave/security-advisories": "dev-master"
+  },
+  "autoload": {
+    "psr-4": {
+      "Proton\\": "src/"
+    }
+  }
+}
