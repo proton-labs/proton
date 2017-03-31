@@ -29,6 +29,11 @@ final class ExtensionRegistry
     private $serviceLocator;
 
     /**
+     * @var \Exception
+     */
+    private $exception;
+
+    /**
      * @param ServiceLocator $serviceLocator
      */
     public function __construct(ServiceLocator $serviceLocator)
@@ -56,7 +61,7 @@ final class ExtensionRegistry
      */
     public function pre(Command $command) : void
     {
-        $this->extensionRegisterStrategy('pre', $command, null);
+        $this->extensionRegisterStrategy('pre', $command);
     }
 
     /**
@@ -64,7 +69,7 @@ final class ExtensionRegistry
      */
     public function post(Command $command) : void
     {
-        $this->extensionRegisterStrategy('post', $command, null);
+        $this->extensionRegisterStrategy('post', $command);
     }
 
     /**
@@ -73,10 +78,11 @@ final class ExtensionRegistry
      */
     public function passException(Command $command, \Exception $exception) : void
     {
-        $this->extensionRegisterStrategy('exception', $command, $exception);
+        $this->exception = $exception;
+        $this->extensionRegisterStrategy('exception', $command);
     }
 
-    private function extensionRegisterStrategy(string $method, Command $command, \Exception $exception)
+    private function extensionRegisterStrategy(string $method, Command $command)
     {
         foreach ($this->extensions as $extensionItem) {
             /** @var Extension $extension */
@@ -91,7 +97,7 @@ final class ExtensionRegistry
                         break;
                     case 'exception':
                     default:
-                        $extension->catchException($command, $exception, $this->serviceLocator);
+                        $extension->catchException($command, $this->exception, $this->serviceLocator);
                         break;
                 }
             }
