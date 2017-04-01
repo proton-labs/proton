@@ -32,9 +32,10 @@ class EnumType extends Type
     public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform) : string
     {
         $values = array_map(function ($value) {
-            return '\'' .$value. '\'';
+            return '\''.$value.'\'';
         }, $this->values);
-        return 'ENUM(' .implode(', ', $values). ')';
+
+        return 'ENUM('.implode(', ', $values).')';
     }
 
     /**
@@ -47,13 +48,15 @@ class EnumType extends Type
 
     /**
      * {@inheritdoc}
+     *
      * @throws \InvalidArgumentException
      */
     public function convertToDatabaseValue($value, AbstractPlatform $platform)
     {
         if (!in_array($value, $this->values, true)) {
-            throw new \InvalidArgumentException('Invalid \'' .$this->name. '\' value.');
+            throw new \InvalidArgumentException('Invalid \''.$this->name.'\' value.');
         }
+
         return $value;
     }
 

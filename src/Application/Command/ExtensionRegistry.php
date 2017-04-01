@@ -40,9 +40,9 @@ final class ExtensionRegistry
      */
     public function __construct(ServiceLocator $serviceLocator)
     {
-        $this->extensions     = [];
+        $this->extensions = [];
         $this->serviceLocator = $serviceLocator;
-        $this->exception      = new \Exception();
+        $this->exception = new \Exception();
     }
 
     /**

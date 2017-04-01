@@ -41,7 +41,7 @@ final class DoctrineExtension implements Extension
     public function dependsOn() : array
     {
         return [
-            Extension\CoreExtension::class
+            Extension\CoreExtension::class,
         ];
     }
 
@@ -57,7 +57,7 @@ final class DoctrineExtension implements Extension
             new ServiceContainer\Definition(
                 ORMFactory::class,
                 [
-                    new ServiceContainer\ArgumentService($this->entityManagerServiceId)
+                    new ServiceContainer\ArgumentService($this->entityManagerServiceId),
                 ]
             )
         );
