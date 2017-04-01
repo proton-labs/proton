@@ -19,6 +19,8 @@ final class ScalarArgument
     private $value;
 
     /**
+     * ScalarArgument constructor.
+     *
      * @param mixed $value
      */
     public function __construct($value)
