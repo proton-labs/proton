@@ -14,7 +14,8 @@
     "doctrine/orm": "~2.5",
     "league/tactician": "~1.0",
     "ramsey/uuid": "~3.6",
-    "roave/security-advisories": "dev-master"
+    "roave/security-advisories": "dev-master",
+    "ocramius/generated-hydrator": "^2.0"
   },
   "require-dev": {
     "phpunit/phpunit": "~6.0"
