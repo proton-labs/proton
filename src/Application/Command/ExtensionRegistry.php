@@ -95,7 +95,7 @@ final class ExtensionRegistry
             /** @var Extension $extension */
             $extension = $extensionItem[self::EXTENSION_KEY];
             if ($extension->expands($command)) {
-                if($method === 'catchException') {
+                if ($method === 'catchException') {
                     call_user_func_array([$extension, $method], [$command, $this->exception, $this->serviceLocator]);
                     continue;
                 }
