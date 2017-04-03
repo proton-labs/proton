@@ -30,11 +30,11 @@ final class UUID
      */
     public function __construct(string $uuid)
     {
-        $pattern = '/' . BaseUUID::VALID_PATTERN . '/';
-        if (!preg_match($pattern, (string)$uuid)) {
+        $pattern = '/'.BaseUUID::VALID_PATTERN.'/';
+        if (!preg_match($pattern, (string) $uuid)) {
             throw new InvalidUUIDFormatException();
         }
-        $this->uuid = (string)$uuid;
+        $this->uuid = (string) $uuid;
     }
 
     /**
@@ -42,7 +42,7 @@ final class UUID
      */
     public function __toString() : string
     {
-        return (string)$this->uuid;
+        return (string) $this->uuid;
     }
 
     /**
@@ -52,6 +52,6 @@ final class UUID
      */
     public function isEqual(UUID $uuid) : bool
     {
-        return (string)$uuid === $this->uuid;
+        return (string) $uuid === $this->uuid;
     }
 }
