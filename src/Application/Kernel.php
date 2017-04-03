@@ -43,13 +43,7 @@ final class Kernel
      */
     public function build(ServiceContainer $container) : void
     {
-        foreach ($this->extensions as $extension) {
-            foreach ($extension->dependsOn() as $expectedExtensionClass) {
-                if (!array_key_exists($expectedExtensionClass, $this->extensions)) {
-                    throw KernelException::missingExtension($expectedExtensionClass);
-                }
-            }
-        }
+        $this->checkLoadedExtensions();
 
         foreach ($this->extensions as $extension) {
             $extension->build($container);
@@ -63,6 +57,20 @@ final class Kernel
     {
         foreach ($this->extensions as $extension) {
             $extension->boot($locator);
+        }
+    }
+
+    /**
+     * @throws KernelException
+     */
+    private function checkLoadedExtensions() : void
+    {
+        foreach ($this->extensions as $extension) {
+            foreach ($extension->dependsOn() as $expectedExtensionClass) {
+                if (!array_key_exists($expectedExtensionClass, $this->extensions)) {
+                    throw KernelException::missingExtension($expectedExtensionClass);
+                }
+            }
         }
     }
 }
