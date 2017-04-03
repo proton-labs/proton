@@ -82,27 +82,24 @@ final class ExtensionRegistry
     public function passException(Command $command, \Exception $exception) : void
     {
         $this->exception = $exception;
-        $this->extensionRegisterStrategy('exception', $command);
+        $this->extensionRegisterStrategy('catchException', $command);
     }
 
+    /**
+     * @param string  $method
+     * @param Command $command
+     */
     private function extensionRegisterStrategy(string $method, Command $command)
     {
         foreach ($this->extensions as $extensionItem) {
             /** @var Extension $extension */
             $extension = $extensionItem[self::EXTENSION_KEY];
             if ($extension->expands($command)) {
-                switch ($method) {
-                    case 'pre':
-                        $extension->pre($command, $this->serviceLocator);
-                        break;
-                    case 'post':
-                        $extension->post($command, $this->serviceLocator);
-                        break;
-                    case 'exception':
-                    default:
-                        $extension->catchException($command, $this->exception, $this->serviceLocator);
-                        break;
+                if($method === 'catchException') {
+                    call_user_func_array([$extension, $method], [$command, $this->exception, $this->serviceLocator]);
+                    continue;
                 }
+                call_user_func_array([$extension, $method], [$command, $this->serviceLocator]);
             }
         }
     }
